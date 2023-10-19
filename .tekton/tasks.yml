@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: cleanup-task
+spec:
+  steps:
+  - name: cleanup
+    image: alpine
+    script:
+    - echo "Performing cleanup tasks..."
+    # Add any cleanup steps you need here
+
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: nose-task
+spec:
+  steps:
+  - name: run-nose-tests
+    image: python:3.x  # Specify the desired Python version
+    script:
+    - pip install nose  # Install Nose test runner
+    - nosetests  # Run your unit tests using Nose
